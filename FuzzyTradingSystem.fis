@@ -1,0 +1,78 @@
+[System]
+Name='FuzzyTradingSystem'
+Type='mamdani'
+Version=2.0
+NumInputs=7
+NumOutputs=1
+NumRules=0
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='RISK-AVERSION'
+Range=[0 1]
+NumMFs=3
+MF1='Risk-Averse':'trimf',[-0.5 0 0.5]
+MF2='Risk-Indifferent':'trimf',[0 0.5 1]
+MF3='Risk-Tolerant':'trimf',[0.5 1 1.5]
+
+[Input2]
+Name='MACD-Crossing'
+Range=[-1 1]
+NumMFs=2
+MF1='Bearish':'gbellmf',[0.871 6.57 -1.05]
+MF2='Bullish':'gbellmf',[0.871 7.38 1.0258379204893]
+
+[Input3]
+Name='Portfolio-Diversity'
+Range=[0 1]
+NumMFs=5
+MF1='Very-Little':'trimf',[-0.25 0 0.25]
+MF2='Little':'trimf',[0 0.25 0.5]
+MF3='Very-Strong':'trimf',[0.75 1 1.25]
+MF4='Diverse':'trimf',[0 0.5 1]
+MF5='Strong':'trimf',[0.5 0.75 1]
+
+[Input4]
+Name='Bollinger-Bands'
+Range=[0 1]
+NumMFs=3
+MF1='mf1':'trimf',[-0.4 0 0.4]
+MF2='mf2':'trimf',[0.1 0.5 0.9]
+MF3='mf3':'trimf',[0.6 1 1.4]
+
+[Input5]
+Name='Relative-Strength-Index'
+Range=[0 100]
+NumMFs=3
+MF1='Under-Valued':'gauss2mf',[3.4 -0.5 3.4 30]
+MF2='Neutral':'trimf',[20 50 80]
+MF3='Over-Valued':'gauss2mf',[3.4 70 3.4 112]
+
+[Input6]
+Name='MACD-Divergence'
+Range=[-1 1]
+NumMFs=2
+MF1='Bearish':'trapmf',[-1.72 -1.08 -0.4 0.2]
+MF2='Bullish':'trapmf',[-0.2 0.4 1.08 1.72]
+
+[Input7]
+Name='Price-To-Average'
+Range=[-1 1]
+NumMFs=3
+MF1='mf1':'trimf',[-1.8 -1 -0.2]
+MF2='mf2':'trimf',[-0.8 0 0.8]
+MF3='mf3':'trimf',[0.2 1 1.8]
+
+[Output1]
+Name='output1'
+Range=[0 1]
+NumMFs=3
+MF1='mf1':'trimf',[-0.4 0 0.4]
+MF2='mf2':'trimf',[0.1 0.5 0.9]
+MF3='mf3':'trimf',[0.6 1 1.4]
+
+[Rules]
